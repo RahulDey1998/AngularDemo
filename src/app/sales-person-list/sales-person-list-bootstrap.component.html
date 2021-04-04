@@ -1,0 +1,23 @@
+<p>sales-person-list works!</p>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th> 
+            <th>Email</th>
+            <th>Total Sales</th>
+            <th>Met Quota?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let salesPerson of salesPersonList">
+            <td>{{  salesPerson.name }}</td>
+            <td>{{  salesPerson.email }}</td>
+            <td>{{  salesPerson.totalSales | currency:'USD' }}</td>
+            <td>
+                <div *ngIf="salesPerson.totalSales > 1000; else elseBlock">Yes</div>
+                <ng-template #elseBlock>No</ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
